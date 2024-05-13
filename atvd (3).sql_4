@@ -1,0 +1,51 @@
+
+CREATE TABLE cachorro(
+  id integer NOT NULL PRIMARY KEY,
+  nome varchar(250),
+  dono varchar(250),
+  altura float(5,2),
+  peso float(5,2),
+  idade int,
+  raca varchar(250),
+  racao varchar(250),
+  cor varchar(250)
+ );
+SELECT *FROM cachorro;
+SELECT MAX(peso) FROM cachorro;
+SELECT MIN(peso) FROM cachorro;
+SELECT SUM(peso) FROM cachorro;
+SELECT MAX(altura) FROM cachorro;
+SELECT MIN(altura) FROM cachorro;
+SELECT SUM(altura) FROM cachorro;
+SELECT MAX(idade) FROM cachorro;
+SELECT MIN(idade) FROM cachorro;
+SELECT nome, dono, raca, racao FROM cachorro WHERE peso >= 10;
+
+
+INSERT INTO cachorro VALUES(1,'Charles', 'Marcelo', 1.5, 75, 2, 'pitbull', 'premier', 'azul');
+INSERT INTO cachorro VALUES(2,'Miral', 'Lucas', 0.9, 12, 5, 'bulldog', 'royal canini', 'amarelo');
+INSERT INTO cachorro VALUES(3,'Alfredo', 'Erick', 0.6, 10, 6, 'bullterreier', 'Gran Plus', 'vermelho');
+
+INSERT INTO cachorro VALUES(4,'Cheback', 'Lara', 1.5, 10, 6, 'bulldog campeiro', 'pedigree', 'caramelo');
+INSERT INTO cachorro VALUES(5,'George', 'Leticia', 0.2, 9, 12, 'pug', 'formula pura', 'creme');
+INSERT INTO cachorro VALUES(6,'Jasper', 'Rian', 1, 45, 4, 'vira lata', 'royal canini', 'cinza');
+INSERT INTO cachorro VALUES(7,'Burguer', 'Jailana', 0.2, 2, 10, 'chiuaua', 'premier', 'preto e branco');
+
+INSERT INTO cachorro VALUES(8,'Max', 'Clara Clero', 1.7, 5, 5, 'border collie', 'pedigree', 'marrom');
+INSERT INTO cachorro VALUES(9,'Zeus', 'Gabriel', 0.1, 1, 3, 'poodle', 'goldeN', 'marrom');
+INSERT INTO cachorro VALUES(10,'Mini', 'Leonardo', 1.7, 56, 5, 'martive tibetano', 'Gran Plus', 'loiro');
+
+
+UPDATE cachorro SET nome = 'Charles de Souza' WHERE dono = 'Marcelo';
+UPDATE cachorro SET nome = 'Mirai Toin' WHERE id =  2;
+UPDATE cachorro SET nome = 'Alfredo Neto' WHERE id =  3;
+UPDATE cachorro SET nome = 'Chebek' WHERE id =  4;
+UPDATE cachorro SET nome = 'George Maicon' WHERE id =  5;
+UPDATE cachorro SET nome = 'Jasper do rian' WHERE id =  6;
+UPDATE cachorro SET nome = 'Burguer de Siri' WHERE id =  7;
+UPDATE cachorro SET nome = 'Karl Mark' WHERE id =  8;
+UPDATE cachorro SET nome = 'Zeus Jacaro' WHERE id =  9;
+UPDATE cachorro SET nome = 'Mini Cooper' WHERE id =  10;
+
+
+DELETE FROM cachorro WHERE peso <= 12 ;

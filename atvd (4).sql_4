@@ -1,0 +1,52 @@
+CREATE TABLE Faculdade(
+  id integer NOT NULL PRIMARY KEY,
+  curso varchar(250),
+  coordenador varchar(250),
+  qtd_semestre int,
+  vgs_semestre int,
+  media_curso float(5,2),
+  nota_enade int
+ );
+SELECT *FROM Faculdade;
+SELECT MAX(qtd_semestre) FROM Faculdade;
+SELECT MIN(qtd_semestre) FROM Faculdade;
+SELECT SUM(qtd_semestre) FROM Faculdade;
+SELECT MAX(vgs_semestre ) FROM Faculdade;
+SELECT MIN(vgs_semestre ) FROM Faculdade;
+SELECT SUM(vgs_semestre ) FROM Faculdade;
+SELECT MAX(media_curso) FROM Faculdade;
+SELECT MIN(media_curso) FROM Faculdade;
+SELECT curso, coordenador, qtd_semestre , vgs_semestre FROM Faculdade WHERE vgs_semestre >= 40;
+
+INSERT INTO FACULDADE VALUES(1,'Psicologia', 'Marcelo', 8, 20, 700, 4);
+INSERT INTO FACULDADE VALUES(2,'Matématica', 'Lucas', 10, 50, 680, 0);
+INSERT INTO FACULDADE VALUES(3,'Arquiterura', 'Erick', 12, 30, 720, 1);
+
+INSERT INTO FACULDADE VALUES(4,'Dança', 'Lara', 4, 15, 550, 0);
+INSERT INTO FACULDADE VALUES(5,'Filosofia', 'Leticia', 6, 25, 560, 4);
+INSERT INTO FACULDADE VALUES(6,'Historia', 'Rian', 8, 45, 650, 5);
+INSERT INTO FACULDADE VALUES(7,'Letras', 'Jailana', 14, 52, 780, 0);
+
+INSERT INTO FACULDADE VALUES(8,'Teologia', 'Daniel', 8, 15, 580, 2);
+INSERT INTO FACULDADE VALUES(9,'Administração', 'Gabriel', 10, 80, 680, 0);
+INSERT INTO FACULDADE VALUES(10,'Computação', 'Leonardo', 6, 70, 700, 0);
+
+INSERT INTO FACULDADE VALUES(11,'Artes cenicas', 'Livia', 6, 40, 620, 2);
+INSERT INTO FACULDADE VALUES(12,'Design grafico', 'Bruna', 8, 60, 640, 3);
+INSERT INTO FACULDADE VALUES(13,'Cinema', 'João', 7, 55, 620, 2);
+
+INSERT INTO FACULDADE VALUES(14,'Música', 'Ricardo', 4, 20, 580, 1);
+INSERT INTO FACULDADE VALUES(15,'Biologia', 'Ruana', 8, 40, 640, 5);
+INSERT INTO FACULDADE VALUES(16,'Medicina', 'Julio', 16, 90, 800, 5);
+INSERT INTO FACULDADE VALUES(17,'Enfermagem', 'Isaque', 10, 85, 780, 4);
+
+INSERT INTO FACULDADE VALUES(18,'Educação fisica', 'Guilherme', 6, 25, 640, 5);
+INSERT INTO FACULDADE VALUES(19,'Odontologia', 'Luiz', 10, 65, 760, 3);
+INSERT INTO FACULDADE VALUES(20,'Nutrição', 'Manel', 8, 55, 740, 4);
+
+
+UPDATE FACULDADE SET coordenador = 'Retirado por falta de orçamento' WHERE id > 12;
+
+DELETE FROM FACULDADE WHERE nota_enade = 0 ;
+
+DROP TABLE Faculdade

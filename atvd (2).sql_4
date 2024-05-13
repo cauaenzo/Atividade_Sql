@@ -1,0 +1,120 @@
+--1) Nome e idade do Autor que fez um livro, que foi publicado na editora Conhecimento e Luz? 
+
+SELECT a.nome, a.idade FROM autor as a, livro as l, editora as e 
+WHERE a.id = l.id_autor AND e.id = l.id_editora AND e.id = 5;
+
+--2) Quantidade de livros publicados pelo Al-Kaibir? 
+
+SELECT COUNT(*) FROM livro WHERE id_autor = 2;
+
+--3) Diga a idade x altura do autor que escreveu o livro a arte da guerra? 
+
+SELECT a.altura * a.idade FROM autor AS a, livro AS l WHERE a.id = l.id_autor AND l.id = 2;
+
+--4) Apresente em Maiúsculo o nome da editora e nome do autor do livro, o último teorema de Fermat. 
+SELECT UPPER(e.nome), UPPER(a.nome) FROM autor as a, livro as l, editora as e 
+WHERE a.id = l.id_autor AND e.id = l.id_editora AND l.id = 3;
+
+--5) Qual é o ID do autor que escreveu o livro com o título "A arte da guerra"? 
+SELECT a.nome FROM autor AS a, livro AS l WHERE a.id = l.id_autor AND l.id = 2;
+
+--6) Qual é o nome da editora do livro com o id igual a 5? 
+SELECT e.nome from livro AS l, editora AS e WHERE e.id = l.id_editora and l.id = 5;
+
+--Second part :
+
+--1) Quantos livros foram escritos pelo autor com o ID 2? 
+SELECT COUNT(*) FROM livro WHERE id_autor = 2;
+
+--2) Qual é o nome da editora do livro que tem id maior que 3? 
+SELECT e.nome FROM livro as l, editora AS e WHERE e.id = l.id_editora and l.id > 3;
+
+--3) Quantos livros foram publicados pela editora "Conhecimento e Luz"? 
+SELECT COUNT(*) FROM livro WHERE id_editora = 5;
+
+--4) Qual é o ID do autor que é mais velho
+SELECT MAX(idade), id FROM autor;
+
+--5) Concatene o nome do autor e o título do livro para todos os livros publicados pela editora com o ID 3. 
+SELECT CONCAT(a.nome, a.idade) FROM autor as a, livro as l, editora as e 
+WHERE a.id = l.id_autor AND e.id = l.id_editora AND e.id = 3;
+
+--6) Converta o nome da editora "Education Solution" para maiúsculas. 
+SELECT UPPER(e.nome) FROM autor as a, livro as l, editora as e 
+WHERE a.id = l.id_autor AND e.id = l.id_editora AND e.id = 4;
+
+
+--7) Converta o nome do autor "Toroskovov" para minúsculas.
+SELECT LOWER(a.nome) FROM autor as a, livro as l, editora as e 
+WHERE a.id = l.id_autor AND e.id = l.id_editora AND a.id = 3;
+
+--TABELA USADA
+
+CREATE TABLE autor(
+	id INTEGER NOT NULL PRIMARY KEY, nome VARCHAR(250), 
+    altura FLOAT(5,2), idade INT  
+);
+INSERT INTO autor VALUES(1, 'Tannebaum', 1.78, 5);
+INSERT INTO autor VALUES(2, 'Al-kaibir', 1.56, 23);
+INSERT INTO autor VALUES(3, 'Toroskovov', 1.9, 41);
+INSERT INTO autor VALUES(4, 'Sun Tzu', 1.61, 18);
+INSERT INTO autor VALUES(5, 'Aitofel', 1.41, 34);
+INSERT INTO autor VALUES(6, 'lia', 1.78, 56);
+INSERT INTO autor VALUES(7, 'joana', 1.56, 23);
+INSERT INTO autor VALUES(8, 'joão', 1.9, 41);
+INSERT INTO autor VALUES(9, 'livia', 1.61, 18);
+INSERT INTO autor VALUES(10, 'noah', 1.41, 34);
+
+DROP TABLE autor
+
+SELECT ROUND(SQRT(CEIL(altura)),2) from autor;
+SELECT CONCAT(nome, ' ', idade) FROM autor;
+--SELECT SUBSTRING(nome FROM inicio FOR comprimento) FROM tabela;
+SELECT UPPER(nome) FROM autor;
+SELECT LOWER(nome) FROM autor;
+
+
+CREATE TABLE editora(
+	id INTEGER NOT NULL PRIMARY KEY, nome VARCHAR(250), 
+    renda FLOAT(5,2), colaborador INT  
+);
+INSERT INTO editora VALUES(1, 'Saber e Conhecer', 1500000, 30);
+INSERT INTO editora VALUES(2, 'Sagah+', 356000, 12);
+INSERT INTO editora VALUES(3, 'Aprender e cia', 11000000, 50);
+INSERT INTO editora VALUES(4, 'Education Solution', 150000, 8);
+INSERT INTO editora VALUES(5, 'Conhecimento e Luz', 500000, 17);
+SELECT *FROM editora;
+
+CREATE TABLE livro(
+	id INTEGER NOT NULL PRIMARY KEY, titulo VARCHAR(250), 
+    valor FLOAT(5,2), id_autor INT, id_editora INT,
+    FOREIGN KEY(id_autor) REFERENCES autor(id),
+    FOREIGN KEY(id_editora) REFERENCES editora(id)
+);
+INSERT INTO livro VALUES(1, 'Assim falava Zaratrusta', 30.50, 1, 2);
+INSERT INTO livro VALUES(2, 'A arte da guerra', 20.7, 4, 3);
+INSERT INTO livro VALUES(3, 'O último Teorema de Fermat', 50, 5, 1);
+INSERT INTO livro VALUES(4, 'O segredo da maçonaria', 35.33, 2, 2);
+INSERT INTO livro VALUES(8, 'Deus e os astronautas', 30.50, 3, 4);
+INSERT INTO livro VALUES(6, 'Deus e planetas', 67.50, 2, 5);
+
+SELECT titulo, valor from livro WHERE id > 2;--pegar o nome e valor dos livros com id maior que 2
+SELECT MAX(valor) AS MaiorValor from livro;
+SELECT MIN(valor) AS MenorValor from livro;
+SELECT AVG(valor) AS MediaValor from livro;
+SELECT COUNT(valor) AS QuantidadeValor from livro;
+SELECT DISTINCT(valor) AS ValorUnico from livro;
+
+SELECT id from livro AS l, autor as a 
+WHERE l.id_autor = a.id AND a.nome = 'Tannebaum';
+
+
+SELECT * FROM autor where idade > 30 OR altura > 1.8;
+SELECT * FROM autor where not(idade > 23);
+SELECT ROUND(altura * idade,2) FROM autor WHERE id > 2;
+SELECT altura + idade FROM autor;
+SELECT altura * idade FROM autor;
+SELECT ROUND(altura / idade,2) FROM autor;
+SELECT (idade % 2) as resto FROM autor where id = 2;
+SELECT id FROM autor where id >= 2;
+SELECT id FROM autor where id BETWEEN 2 AND 5;

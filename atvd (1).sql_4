@@ -1,0 +1,44 @@
+CREATE TABLE carro(
+  id integer NOT NULL PRIMARY KEY,
+  nome varchar(250),
+  frabricante varchar(250),
+  cor varchar(250),
+  motor varchar(250),
+  aro varchar(250),
+  preco float(5,2),
+  data_d_lancamento int
+ );
+SELECT *FROM carro;
+SELECT MAX(preco) FROM carro;
+SELECT MIN(preco) FROM carro;
+SELECT SUM(preco) FROM carro;
+SELECT MAX(data_d_lancamento) FROM carro;
+SELECT MIN(data_d_lancamento) FROM carro;
+SELECT SUM(data_d_lancamento) FROM carro;
+SELECT nome, frabricante, cor, motor FROM carro WHERE preco > 100000;
+SELECT nome, frabricante, cor, motor FROM carro;
+SELECT nome, frabricante, motor, data_d_lancamento FROM carro
+
+INSERT INTO carro VALUES(1,'Fusca', 'Wolksvagem', 'preto', 'V8', '8', 10000, 1975);
+INSERT INTO carro VALUES(2,'911', 'Porsche', 'preto', 'V10', '16', 1000000, 2019);
+INSERT INTO carro VALUES(3,'Camaro', 'Chevrolet', 'amarelo', 'V8', '16', 250000, 2007);
+INSERT INTO carro VALUES(4,'Charger', 'Dodge', 'roxo', 'V8', '16', 1000000, 2012);
+INSERT INTO carro VALUES(5,'Escort', 'Ford', 'preto', 'V1', '8', 50000, 1990);
+INSERT INTO carro VALUES(6,'Brasilia', 'Wolksvagem', 'amarelo', 'V8', '8', 50000, 1987);
+INSERT INTO carro VALUES(7,'Kombi', 'Wolksvagem', 'verde', 'V4', '8', 70000, 1980);
+INSERT INTO carro VALUES(8,'Chiron', 'Bugatti', 'preto', 'V12', '18', 10000000, 2020);
+INSERT INTO carro VALUES(9,'R34', 'Nissan', 'azul', 'RB26', '16', 1000000, 1998);
+INSERT INTO carro VALUES(10,'718', 'Porsche', 'branco', 'V12', '16', 1000000, 2019);
+
+UPDATE carro SET data_d_lancamento = 1978 WHERE dono = 1;
+UPDATE carro SET data_d_lancamento = 2020 WHERE id =  2;
+UPDATE carro SET data_d_lancamento = 2010 WHERE id =  3;
+UPDATE carro SET data_d_lancamento = 2014 WHERE id =  4;
+UPDATE carro SET data_d_lancamento = 1800 wHERE id =  5;
+UPDATE carro SET data_d_lancamento = 254 WHERE id =  6;
+UPDATE carro SET data_d_lancamento = 1945 WHERE id =  7;
+UPDATE carro SET data_d_lancamento = 3000 WHERE id =  8;
+UPDATE carro SET data_d_lancamento = 2111 WHERE id =  9;
+UPDATE carro SET data_d_lancamento = 2022 WHERE id =  10;
+
+DELETE FROM carro WHERE data_d_lancamento <= 2000;
